@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Better Conditions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>String</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @better_conditions.each do |better_condition| %>
+      <tr>
+        <td><%= better_condition.content %></td>
+        <td><%= link_to 'Edit', edit_better_condition_path(better_condition) %></td>
+        <td><%= link_to 'Destroy', better_condition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Better Condition', new_better_condition_path %>

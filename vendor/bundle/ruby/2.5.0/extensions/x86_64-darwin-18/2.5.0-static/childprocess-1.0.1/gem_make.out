@@ -1,0 +1,5 @@
+current directory: /Users/manaby/workspace/health_app/vendor/bundle/ruby/2.5.0/gems/childprocess-1.0.1/ext
+/Users/manaby/.rbenv/versions/2.5.3/bin/ruby mkrf_conf.rb
+
+current directory: /Users/manaby/workspace/health_app/vendor/bundle/ruby/2.5.0/gems/childprocess-1.0.1/ext
+/Users/manaby/.rbenv/versions/2.5.3/bin/ruby -rrubygems /Users/manaby/workspace/health_app/vendor/bundle/ruby/2.5.0/gems/rake-12.3.2/exe/rake RUBYARCHDIR=/Users/manaby/workspace/health_app/vendor/bundle/ruby/2.5.0/extensions/x86_64-darwin-18/2.5.0-static/childprocess-1.0.1 RUBYLIBDIR=/Users/manaby/workspace/health_app/vendor/bundle/ruby/2.5.0/extensions/x86_64-darwin-18/2.5.0-static/childprocess-1.0.1

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>title:</strong>
+  <%= @daiary.title %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @daiary.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<%= link_to 'Edit', edit_daiary_path(@daiary) %> |
+<%= link_to 'Back', daiaries_path %>

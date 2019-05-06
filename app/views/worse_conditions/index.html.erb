@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Worse Conditions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worse_conditions.each do |worse_condition| %>
+      <tr>
+        <td><%= worse_condition.content %></td>
+        <td><%= link_to 'Show', worse_condition %></td>
+        <td><%= link_to 'Edit', edit_worse_condition_path(worse_condition) %></td>
+        <td><%= link_to 'Destroy', worse_condition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worse Condition', new_worse_condition_path %>

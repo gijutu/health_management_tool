@@ -1,0 +1,2 @@
+class Daiary < ApplicationRecord
+end

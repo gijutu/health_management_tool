@@ -1,0 +1,2 @@
+class WorseCondition < ApplicationRecord
+end

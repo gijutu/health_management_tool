@@ -1,0 +1,2 @@
+class BetterCondition < ApplicationRecord
+end

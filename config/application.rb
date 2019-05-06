@@ -8,8 +8,15 @@ Bundler.require(*Rails.groups)
 
 module HealthApp
   class Application < Rails::Application
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
+    config.generators do |g|
+      g.assets false
+      g.helper false
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
