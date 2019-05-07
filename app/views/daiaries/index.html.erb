@@ -8,19 +8,19 @@
   <%= date %>
 
   <% daiaries.each do |daiary| %>
-    <% if daiary.user_icon == '普通' %>
+    <% if daiary.day_icon == '普通' %>
       <%= link_to image_tag("mark_face_smile.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == '元気' %>
+    <% if daiary.day_icon == '元気' %>
       <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == '憂うつ' %>
+    <% if daiary.day_icon == '憂うつ' %>
       <%= link_to image_tag("mark_face_ase.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == 'とても元気' %>
+    <% if daiary.day_icon == 'とても元気' %>
       <%= link_to image_tag("mark_face_tere.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == 'とても憂うつ' %>
+    <% if daiary.day_icon == 'とても憂うつ' %>
       <%= link_to image_tag("mark_face_cry.png", size: "75x75"), daiary %>
     <% end %>
   <% end %>
@@ -31,19 +31,19 @@
   <%= date %>
 
   <% daiaries.each do |daiary| %>
-    <% if daiary.user_icon == '普通' %>
+    <% if daiary.day_icon == '普通' %>
       <%= link_to image_tag("mark_face_smile.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == '元気' %>
+    <% if daiary.day_icon == '元気' %>
       <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == '憂うつ' %>
+    <% if daiary.day_icon == '憂うつ' %>
       <%= link_to image_tag("mark_face_ase.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == 'とても元気' %>
+    <% if daiary.day_icon == 'とても元気' %>
       <%= link_to image_tag("mark_face_tere.png", size: "75x75"), daiary %>
     <% end %>
-    <% if daiary.user_icon == 'とても憂うつ' %>
+    <% if daiary.day_icon == 'とても憂うつ' %>
       <%= link_to image_tag("mark_face_cry.png", size: "75x75"), daiary %>
     <% end %>
   <% end %>

@@ -1,10 +1,11 @@
 class DaiariesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_daiary, only: [:show, :edit, :update, :destroy]
 
   # GET /daiaries
   # GET /daiaries.json
   def index
-    @daiaries = Daiary.all
+    @daiaries = current_user.daiaries.all
   end
 
   # GET /daiaries/1
@@ -70,6 +71,6 @@ class DaiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daiary_params
-      params.require(:daiary).permit(:title, :start_time, :user_id, :user_icon)
+      params.require(:daiary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :tatal_sleep)
     end
 end

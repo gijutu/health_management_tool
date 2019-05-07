@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <!-- <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div> -->
-
   <div class="field">
-    <%= form.label :気分 %>
-    <%= form.select :user_icon, Daiary.user_icons.keys.to_a, {} %>
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
   </div>
 
   <div class="field">
-    <%= form.label :訓練開始時間 %>
-    <%= form.datetime_select :start_time %>
+    <%= form.label :気分 %>
+    <%= form.select :day_icon, Daiary.day_icons.keys.to_a, {} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :現在時刻 %>
+    <%= form.date_select :start_time %>
   </div>
 
   <div class="actions">
