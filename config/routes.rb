@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :signs
   resources :worse_conditions
   resources :attentions
   resources :better_conditions

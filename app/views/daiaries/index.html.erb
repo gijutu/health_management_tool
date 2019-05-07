@@ -2,13 +2,54 @@
 
 <h1>STEP</h1>
 
-<%= link_to '今日のSTEP', new_daiary_path %>
-<%= link_to 'いい調子一覧', better_conditions_path %>
+<h2><%= link_to '今日のSTEP', new_daiary_path %></h2>
 
 <%= month_calendar events: @daiaries do |date, daiaries| %>
   <%= date %>
 
   <% daiaries.each do |daiary| %>
-    <%= link_to "#{daiary.title}", daiary %>
+    <% if daiary.user_icon == '普通' %>
+      <%= link_to image_tag("mark_face_smile.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == '元気' %>
+      <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == '憂うつ' %>
+      <%= link_to image_tag("mark_face_ase.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == 'とても元気' %>
+      <%= link_to image_tag("mark_face_tere.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == 'とても憂うつ' %>
+      <%= link_to image_tag("mark_face_cry.png", size: "75x75"), daiary %>
+    <% end %>
   <% end %>
+<% end %>
+
+<h1>週カレンダーA</h1>
+<%= week_calendar number_of_weeks: 1, events: @daiaries do |date, daiaries| %>
+  <%= date %>
+
+  <% daiaries.each do |daiary| %>
+    <% if daiary.user_icon == '普通' %>
+      <%= link_to image_tag("mark_face_smile.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == '元気' %>
+      <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == '憂うつ' %>
+      <%= link_to image_tag("mark_face_ase.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == 'とても元気' %>
+      <%= link_to image_tag("mark_face_tere.png", size: "75x75"), daiary %>
+    <% end %>
+    <% if daiary.user_icon == 'とても憂うつ' %>
+      <%= link_to image_tag("mark_face_cry.png", size: "75x75"), daiary %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>週カレンダーB</h1>
+<%= week_calendar number_of_weeks: 1 do |date| %>
+  <%= date %>
 <% end %>

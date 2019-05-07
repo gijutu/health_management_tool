@@ -25,6 +25,7 @@ class DaiariesController < ApplicationController
   # POST /daiaries.json
   def create
     @daiary = Daiary.new(daiary_params)
+    @daiary.user_id = current_user.id
 
     respond_to do |format|
       if @daiary.save
@@ -69,6 +70,6 @@ class DaiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daiary_params
-      params.require(:daiary).permit(:title, :start_time)
+      params.require(:daiary).permit(:title, :start_time, :user_id, :user_icon)
     end
 end

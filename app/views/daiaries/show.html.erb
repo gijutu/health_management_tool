@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>title:</strong>
-  <%= @daiary.title %>
+  <strong>気分</strong>
+  <%= @daiary.user_icon %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
+  <strong>訓練開始時間:</strong>
   <%= @daiary.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <%= link_to 'Edit', edit_daiary_path(@daiary) %> |
+<%= link_to '消す', @daiary, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', daiaries_path %>

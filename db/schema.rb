@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_040515) do
+ActiveRecord::Schema.define(version: 2019_05_07_104423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,17 +19,30 @@ ActiveRecord::Schema.define(version: 2019_05_06_040515) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
   end
 
   create_table "better_conditions", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
   end
 
   create_table "daiaries", force: :cascade do |t|
     t.string "title"
     t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "user_icon"
+  end
+
+  create_table "signs", force: :cascade do |t|
+    t.date "weekly_sign"
+    t.bigint "better_condition_id"
+    t.bigint "attention_id"
+    t.bigint "worse_condition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_040515) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -56,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_040515) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
   end
 
 end
