@@ -1,10 +1,10 @@
-<%= form_with(model: @daiary, local: true) do |form| %>
-  <% if daiary.errors.any? %>
+<%= form_with(model: @diary, local: true) do |form| %>
+  <% if diary.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(daiary.errors.count, "error") %> prohibited this daiary from being saved:</h2>
+      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
 
       <ul>
-      <% daiary.errors.full_messages.each do |message| %>
+      <% diary.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -18,22 +18,22 @@
 
   <div class="field">
     <%= form.label :今日の気分 %>
-    <%= form.select :day_icon, Daiary.day_icons.keys.to_a, {} %>
+    <%= form.select :day_icon, Diary.day_icons.keys.to_a, {} %>
   </div>
 
   <div class="field">
     <%= form.label :起床時刻 %>
-    <%= form.time_select :get_up_time, default: {hour: 7, min: 0} %>
+    <%= form.time_select :getup_at, default: {hour: 7, min: 0} %>
   </div>
 
   <div class="field">
     <%= form.label :就寝時刻 %>
-    <%= form.time_select :bed_time, default: {hour: 22, min: 0} %>
+    <%= form.time_select :sleep_at, default: {hour: 22, min: 0} %>
   </div>
 
   <div class="field">
     <%= form.label :入眠 %>
-    <%= form.select :sleep_label, Daiary.sleep_labels.keys.to_a, {} %>
+    <%= form.select :sleep_label, Diary.sleep_labels.keys.to_a, {} %>
   </div>
 
   <div class="field">
