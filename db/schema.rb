@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_055605) do
+ActiveRecord::Schema.define(version: 2019_05_09_064938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_055605) do
     t.integer "category"
   end
 
-  create_table "daiaries", force: :cascade do |t|
+  create_table "diaries", force: :cascade do |t|
     t.string "comment"
     t.datetime "start_time"
     t.datetime "created_at", null: false
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2019_05_09_055605) do
     t.string "day_icon"
     t.string "sleep_label"
     t.float "sleep_hour"
-    t.time "get_up_time"
-    t.time "bed_time"
+    t.datetime "sleep_at"
+    t.datetime "getup_at"
   end
 
   create_table "signs", force: :cascade do |t|

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :worse_conditions
   resources :attentions
   resources :better_conditions
-  resources :daiaries
+  resources :diaries
   devise_for :users
   get 'home/index'
   get 'home/show'
