@@ -28,7 +28,7 @@ class DaiariesController < ApplicationController
     @daiary = Daiary.new(daiary_params)
     @daiary.user_id = current_user.id
     # binding.pry
-    @daiary.tatal_sleep = @daiary.get_up_time - @daiary.bed_time
+    @daiary.sleep_hour = (@daiary.bed_time - @daiary.get_up_time) / 3600
 
     respond_to do |format|
       if @daiary.save
@@ -73,6 +73,6 @@ class DaiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daiary_params
-      params.require(:daiary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :tatal_sleep, :get_up_time, :bed_time)
+      params.require(:daiary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :sleep_hour, :get_up_time, :bed_time)
     end
 end
