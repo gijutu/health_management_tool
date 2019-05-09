@@ -6,7 +6,17 @@
 </p>
 
 <p>
-  <strong>訓練開始時間:</strong>
+  <strong>入眠</strong>
+  <%= @daiary.sleep_label %>
+</p>
+
+<p>
+  <strong>睡眠時間</strong>
+  <%= @daiary.tatal_sleep %>時間
+</p>
+
+<p>
+  <strong>記録日:</strong>
   <%= @daiary.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 

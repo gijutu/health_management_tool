@@ -12,18 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
+    <%= form.label :今日は %>
+    <%= form.date_select :start_time %>
   </div>
 
   <div class="field">
-    <%= form.label :気分 %>
+    <%= form.label :今日の気分 %>
     <%= form.select :day_icon, Daiary.day_icons.keys.to_a, {} %>
   </div>
 
   <div class="field">
-    <%= form.label :現在時刻 %>
-    <%= form.date_select :start_time %>
+    <%= form.label :起床時刻 %>
+    <%= form.time_select :get_up_time, default: {hour: 7, min: 0} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :就寝時刻 %>
+    <%= form.time_select :bed_time, default: {hour: 22, min: 0} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :入眠 %>
+    <%= form.select :sleep_label, Daiary.sleep_labels.keys.to_a, {} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :今日の行動 %>
+    <%= form.text_field :comment %>
   </div>
 
   <div class="actions">

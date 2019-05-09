@@ -50,6 +50,11 @@
 <% end %>
 
 <h1>週カレンダーB</h1>
-<%= week_calendar number_of_weeks: 1 do |date| %>
+<%= week_calendar number_of_weeks: 1, events: @daiaries do |date, daiaries| %>
   <%= date %>
+
+  <% daiaries.each do |daiary| %>
+    <h2><%= link_to "#{daiary.sleep_label}", daiary %></h2>
+    <h2><%= link_to "#{daiary.tatal_sleep}時間", daiary %></h2>
+  <% end %>
 <% end %>
