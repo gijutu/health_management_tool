@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'home/show'
 
   root to: "home#index"
+  post '/callback' => 'linebot#callback'
 end
