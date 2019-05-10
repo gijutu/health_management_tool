@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>気分</strong>
+  <%= @diary.day_icon %>
+</p>
+
+<p>
+  <strong>入眠</strong>
+  <%= @diary.sleep_label %>
+</p>
+
+<p>
+  <strong>睡眠時間</strong>
+  <%= @diary.sleep_hour %>時間
+</p>
+
+<p>
+  <strong>記録日:</strong>
+  <%= @diary.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<%= link_to 'Edit', edit_diary_path(@diary) %> |
+<%= link_to '消す', @diary, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', diaries_path %>

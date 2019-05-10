@@ -1,0 +1,40 @@
+<%= form_with(model: sign, local: true) do |form| %>
+  <% if sign.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sign.errors.count, "error") %> prohibited this sign from being saved:</h2>
+
+      <ul>
+      <% sign.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= date_select :weekly_sign, Date.today, use_month_numbers: true %>
+  </div>
+
+  <div class="field">
+    <% @better_conditions.each do |better_condition| %>
+      <label>
+        <%= form.check_box :better_condition_id, {multiple: true}, better_condition %>
+          <%= better_condition.content %>
+      </label>
+    <% end %>
+  </div>
+
+  <!-- <div class="field">
+    <%= form.label :attention_ids %>
+    <%= form.number_field :attention_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :worse_condition_ids %>
+    <%= form.number_field :worse_condition_id %>
+  </div> -->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
