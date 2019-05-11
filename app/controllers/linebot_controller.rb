@@ -1,8 +1,8 @@
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
   require 'wikipedia'
+  require 'sinatra'
 
-  # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
 
   def client
@@ -20,40 +20,22 @@ class LinebotController < ApplicationController
       head :bad_request
     end
 
+    events = client.parse_events_from(body)
+
     events.each { |event|
-      if event.message['text'] != nil
+      if event.message['text'] =~ /体調/
+        text = ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"]
+        response = text.shuffle.first
+      else event.message['text'] != nil
         word = event.message['text']
 
         Wikipedia.Configure{
           domain 'ja.wikipedia.org'
           path   'w/api.php'
          }
+        page = Wikipedia.find(word)
+        response = page.summary ; "\n"+ page.fullurl
       end
-
-      page = Wikipedia.find(word)
-
-      response = page.summary ; "\n"+ page.fullurl
-
-      case event
-      when Line::Bot::Event::Message
-        case event.type
-        when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: response
-          }
-          client.reply_message(event['replyToken'], message)
-        end
-      end
-    }
-
-    events.each { |event|
-      if event.message['text'] =~ /体調/
-        message[:text] =
-          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].shuffle
-      end
-
-      response = text.shuffle.first
 
       case event
       when Line::Bot::Event::Message
