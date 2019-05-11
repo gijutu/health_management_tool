@@ -23,12 +23,9 @@ class LinebotController < ApplicationController
     events.each { |event|
       if event.message['text'] =~ /体調/
         message[:text] =
-          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].all
-      end
-
-      response = text
-
-      if event.message['text'] != nil
+          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].shuffle
+      response = shuffle.first
+      else event.message['text'] != nil
         word = event.message['text']
 
         Wikipedia.Configure{
