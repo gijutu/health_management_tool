@@ -1,7 +1,6 @@
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
   require 'wikipedia'
-  require 'sinatra'
 
   protect_from_forgery :except => [:callback]
 

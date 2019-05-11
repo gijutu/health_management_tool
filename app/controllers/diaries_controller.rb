@@ -28,7 +28,11 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
     # binding.pry
-    @diary.sleep_hour = (@diary.getup_at - @diary.sleep_at) / 3600
+    if (@diary.getup_at - @diary.sleep_at).negative?
+      @diary.sleep_hour = 24 - (@diary.sleep_at - @diary.getup_at ) / 3600
+    else
+      @diary.sleep_hour = (@diary.getup_at - @diary.sleep_at) / 3600
+    end
 
     respond_to do |format|
       if @diary.save
@@ -44,6 +48,11 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1
   # PATCH/PUT /diaries/1.json
   def update
+    if (@diary.getup_at - @diary.sleep_at).negative?
+      @diary.sleep_hour = 24 - (@diary.sleep_at - @diary.getup_at ) / 3600
+    else
+      @diary.sleep_hour = (@diary.getup_at - @diary.sleep_at) / 3600
+    end
     respond_to do |format|
       if @diary.update(diary_params)
         format.html { redirect_to @diary, notice: 'diary was successfully updated.' }
