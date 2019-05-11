@@ -20,15 +20,15 @@
     <%= form.label :今日の気分 %>
     <%= form.select :day_icon, Diary.day_icons.keys.to_a, {} %>
   </div>
+  
+  <div class="field">
+    <%= form.label :就寝時刻 %>
+    <%= form.time_select :sleep_at, default: {hour: 22, min: 0} %>
+  </div>
 
   <div class="field">
     <%= form.label :起床時刻 %>
     <%= form.time_select :getup_at, default: {hour: 7, min: 0} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :就寝時刻 %>
-    <%= form.time_select :sleep_at, default: {hour: 22, min: 0} %>
   </div>
 
   <div class="field">
