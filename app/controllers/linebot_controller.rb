@@ -23,12 +23,9 @@ class LinebotController < ApplicationController
     events.each { |event|
       if event.message['text'] =~ /体調/
         message[:text] =
-          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].all
-      end
-
-      response = text
-
-      if event.message['text'] != nil
+          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].shuffle
+      response = shuffle.first
+      else event.message['text'] != nil
         word = event.message['text']
 
         Wikipedia.Configure{
@@ -41,19 +38,6 @@ class LinebotController < ApplicationController
 
       response = page.summary ; "\n"+ page.fullurl
 
-<<<<<<< HEAD
-      # case event
-      # when Line::Bot::Event::Message
-      #   case event.type
-      #   when Line::Bot::Event::MessageType::Text
-      #     message = {
-      #       type: 'text',
-      #       text: response
-      #     }
-      #     client.reply_message(event['replyToken'], message)
-      #   end
-      # end
-=======
       case event
       when Line::Bot::Event::Message
         case event.type
@@ -65,7 +49,6 @@ class LinebotController < ApplicationController
           client.reply_message(event['replyToken'], message)
         end
       end
->>>>>>> 8c500c417378b76efc4e5059fa479e63b392ae62
     }
 
     head :ok
