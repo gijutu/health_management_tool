@@ -20,9 +20,14 @@ class LinebotController < ApplicationController
       head :bad_request
     end
 
-    events = client.parse_events_from(body)
-
     events.each { |event|
+      if event.message['text'] =~ /体調/
+        message[:text] =
+          ["普通", "元気", "抑うつ", "とても元気", "とても抑うつ"].all
+      end
+
+      response = text
+
       if event.message['text'] != nil
         word = event.message['text']
 
@@ -36,18 +41,17 @@ class LinebotController < ApplicationController
 
       response = page.summary ; "\n"+ page.fullurl
 
-      case event
-
-      when Line::Bot::Event::Message
-        case event.type
-        when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: response
-          }
-          client.reply_message(event['replyToken'], message)
-        end
-      end
+      # case event
+      # when Line::Bot::Event::Message
+      #   case event.type
+      #   when Line::Bot::Event::MessageType::Text
+      #     message = {
+      #       type: 'text',
+      #       text: response
+      #     }
+      #     client.reply_message(event['replyToken'], message)
+      #   end
+      # end
     }
 
     head :ok
