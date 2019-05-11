@@ -41,17 +41,17 @@ class LinebotController < ApplicationController
 
       response = page.summary ; "\n"+ page.fullurl
 
-      # case event
-      # when Line::Bot::Event::Message
-      #   case event.type
-      #   when Line::Bot::Event::MessageType::Text
-      #     message = {
-      #       type: 'text',
-      #       text: response
-      #     }
-      #     client.reply_message(event['replyToken'], message)
-      #   end
-      # end
+      case event
+      when Line::Bot::Event::Message
+        case event.type
+        when Line::Bot::Event::MessageType::Text
+          message = {
+            type: 'text',
+            text: response
+          }
+          client.reply_message(event['replyToken'], message)
+        end
+      end
     }
 
     head :ok
