@@ -41,6 +41,7 @@ class LinebotController < ApplicationController
 
       response = page.summary ; "\n"+ page.fullurl
 
+<<<<<<< HEAD
       # case event
       # when Line::Bot::Event::Message
       #   case event.type
@@ -52,6 +53,19 @@ class LinebotController < ApplicationController
       #     client.reply_message(event['replyToken'], message)
       #   end
       # end
+=======
+      case event
+      when Line::Bot::Event::Message
+        case event.type
+        when Line::Bot::Event::MessageType::Text
+          message = {
+            type: 'text',
+            text: response
+          }
+          client.reply_message(event['replyToken'], message)
+        end
+      end
+>>>>>>> 8c500c417378b76efc4e5059fa479e63b392ae62
     }
 
     head :ok
