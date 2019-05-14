@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_064938) do
+ActiveRecord::Schema.define(version: 2019_05_14_104906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2019_05_09_064938) do
     t.float "sleep_hour"
     t.datetime "sleep_at"
     t.datetime "getup_at"
+    t.boolean "halfway_awakening", default: false
+    t.boolean "day_action", default: false
+  end
+
+  create_table "feelings", force: :cascade do |t|
+    t.string "morning_feel"
+    t.string "noon_feel"
+    t.string "night_feel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "signs", force: :cascade do |t|

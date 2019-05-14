@@ -5,5 +5,6 @@ class Diary < ApplicationRecord
                   'とても元気': 'とても元気', 'とても憂うつ': 'とても憂うつ' }
   enum sleep_label: { 'とても早い': 'とても早い', '早い': '早い', 'ふつう': 'ふつう',
                     '遅い': '遅い', 'とても遅い': 'とても遅い' }
+  has_one :feeling
 
 end
