@@ -82,6 +82,6 @@ class DiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diary_params
-      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :sleep_hour, :getup_at, :sleep_at)
+      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :sleep_hour, :getup_at, :sleep_at, :day_action, :halfway_awakening)
     end
 end
