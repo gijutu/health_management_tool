@@ -1,8 +1,102 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>気分</strong>
-  <%= @diary.day_icon %>
+  <strong>今日の1日の気分</strong>
+  <p><%= @diary.day_icon %></p>
+  <% if @diary.day_icon == '普通' %>
+    <%= image_tag("mark_face_smile.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.day_icon == '元気' %>
+    <%= image_tag("mark_face_hehe.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.day_icon == '憂うつ' %>
+    <%= image_tag("mark_face_ase.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.day_icon == 'とても元気' %>
+    <%= image_tag("mark_face_tere.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.day_icon == 'とても憂うつ' %>
+    <%= image_tag("mark_face_cry.png", size: "75x75") %>
+  <% end %>
+</p>
+
+<p>
+  <strong>朝の気分</strong>
+  <p><%= @diary.feeling.morning_feel %></p>
+  <% if @diary.feeling.morning_feel == '' %>
+    未入力です
+  <% end %>
+  <% if @diary.feeling.morning_feel == '普通' %>
+    <%= image_tag("mark_face_smile.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.morning_feel == '元気' %>
+    <%= image_tag("mark_face_hehe.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.morning_feel == '憂うつ' %>
+    <%= image_tag("mark_face_ase.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.morning_feel == 'とても元気' %>
+    <%= image_tag("mark_face_tere.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.morning_feel == 'とても憂うつ' %>
+    <%= image_tag("mark_face_cry.png", size: "75x75") %>
+  <% end %>
+</p>
+
+<p>
+  <strong>昼の気分</strong>
+  <p><%= @diary.feeling.noon_feel %></p>
+  <% if @diary.feeling.noon_feel == '' %>
+    未入力です
+  <% end %>
+  <% if @diary.feeling.noon_feel == '普通' %>
+    <%= image_tag("mark_face_smile.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.noon_feel == '元気' %>
+    <%= image_tag("mark_face_hehe.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.noon_feel == '憂うつ' %>
+    <%= image_tag("mark_face_ase.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.noon_feel == 'とても元気' %>
+    <%= image_tag("mark_face_tere.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.noon_feel == 'とても憂うつ' %>
+    <%= image_tag("mark_face_cry.png", size: "75x75") %>
+  <% end %>
+</p>
+
+<p>
+  <strong>夜の気分</strong>
+  <p><%= @diary.feeling.night_feel %></p>
+  <% if @diary.feeling.night_feel == '' %>
+    未入力です
+  <% end %>
+  <% if @diary.feeling.night_feel == '普通' %>
+    <%= image_tag("mark_face_smile.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.night_feel == '元気' %>
+    <%= image_tag("mark_face_hehe.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.night_feel == '憂うつ' %>
+    <%= image_tag("mark_face_ase.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.night_feel == 'とても元気' %>
+    <%= image_tag("mark_face_tere.png", size: "75x75") %>
+  <% end %>
+  <% if @diary.feeling.night_feel == 'とても憂うつ' %>
+    <%= image_tag("mark_face_cry.png", size: "75x75") %>
+  <% end %>
+</p>
+
+<p>
+  <strong>行動</strong>
+  <% if @diary.day_action == 0 %>
+    外出なし
+  <% end %>
+  <% if @diary.day_action == 1 %>
+    外出あり
+  <% end %>
 </p>
 
 <p>
@@ -12,7 +106,17 @@
 
 <p>
   <strong>睡眠時間</strong>
-  <%= @diary.sleep_hour %>時間
+  <%= "#{@diary.sleep_hour} 時間" %>
+</p>
+
+<p>
+  <strong>中途覚醒</strong>
+  <% if @diary.halfway_awakening == false %>
+    なし
+  <% end %>
+  <% if @diary.halfway_awakening == true %>
+    あり
+  <% end %>
 </p>
 
 <p>

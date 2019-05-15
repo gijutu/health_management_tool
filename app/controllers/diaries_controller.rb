@@ -16,6 +16,7 @@ class DiariesController < ApplicationController
   # GET /diaries/new
   def new
     @diary = Diary.new
+    @diary.build_feeling
   end
 
   # GET /diaries/1/edit
@@ -82,6 +83,8 @@ class DiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diary_params
-      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :sleep_hour, :getup_at, :sleep_at, :day_action, :halfway_awakening)
+      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon,
+                                    :sleep_label, :sleep_hour, :getup_at, :sleep_at,
+                                    :day_action, :halfway_awakening, feeling_attributes:[:id, :morning_feel, :noon_feel, :night_feel])
     end
 end

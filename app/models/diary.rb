@@ -6,5 +6,6 @@ class Diary < ApplicationRecord
   enum sleep_label: { 'とても早い': 'とても早い', '早い': '早い', 'ふつう': 'ふつう',
                     '遅い': '遅い', 'とても遅い': 'とても遅い' }
   has_one :feeling
+  accepts_nested_attributes_for :feeling
 
 end
