@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <p>1日の記録</p>
   <div class="field">
     <%= form.label :今日は %>
     <%= form.date_select :start_time %>
@@ -20,7 +21,7 @@
     <%= form.label :今日の気分 %>
     <%= form.select :day_icon, Diary.day_icons.keys.to_a, {} %>
   </div>
-  
+
   <div class="field">
     <%= form.label :就寝時刻 %>
     <%= form.time_select :sleep_at, default: {hour: 22, min: 0} %>
@@ -37,7 +38,33 @@
   </div>
 
   <div class="field">
-    <%= form.label :今日の行動 %>
+    <%= form.label :中途覚醒の有無 %>
+    <%= form.check_box :halfway_awakening, {}, checked_value: "true", unchecked_value: "false"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :外出の有無 %>
+    <%= form.select :day_action, [['外出なし', 0], ['外出あり', 1]] %>
+  </div>
+
+  <p>朝昼夜の気分</p>
+    <%= form.fields_for :feeling do |form| %>
+      <div class="field">
+        <%= form.label :朝の気分 %>
+        <%= form.select :morning_feel, [['普通', '普通'], ['元気', '元気'],['憂うつ', '憂うつ'],['とても元気','とても元気'],['とても憂うつ','とても憂うつ']], include_blank: "選択して下さい" %>
+      </div>
+      <div class="field">
+        <%= form.label :昼の気分 %>
+        <%= form.select :noon_feel, [['普通', '普通'], ['元気', '元気'],['憂うつ', '憂うつ'],['とても元気','とても元気'],['とても憂うつ','とても憂うつ']], include_blank: "選択して下さい" %>
+      </div>
+      <div class="field">
+        <%= form.label :夜の気分 %>
+        <%= form.select :night_feel, [['普通', '普通'], ['元気', '元気'],['憂うつ', '憂うつ'],['とても元気','とても元気'],['とても憂うつ','とても憂うつ']], include_blank: "選択して下さい" %>
+      </div>
+    <% end %>
+  <br>
+  <div class="field">
+    <%= form.label :今日のコメント %>
     <%= form.text_field :comment %>
   </div>
 
