@@ -56,6 +56,20 @@
 
   <% diaries.each do |diary| %>
     <h2><%= link_to "#{diary.sleep_label}", diary %></h2>
-    <h2><%= link_to "#{diary.sleep_hour}時間", diary %></h2>
+    <h2><%= link_to "#{diary.sleep_hour}時間睡眠", diary %></h2>
+  <% end %>
+<% end %>
+
+<h1>週カレンダーC</h1>
+<%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
+  <%= date %>
+
+  <% diaries.each do |diary| %>
+    <% if diary.day_action == 0 %>
+      <h1><%= link_to "🏠", diary %></h1>
+    <% end %>
+    <% if diary.day_action == 1 %>
+      <h1><%= link_to "🚶🏻", diary %></h1>
+    <% end %>
   <% end %>
 <% end %>

@@ -67,9 +67,8 @@ class LinebotController < ApplicationController
             }
           }
         ]
-}
-
-}
+      }
+    }
 
     client.push_message(ENV['PUSH_TO_ID'], message)
   end
