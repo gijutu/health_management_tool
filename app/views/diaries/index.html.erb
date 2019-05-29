@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>STEP</h1>
+<h1>マナビーレコード</h1>
 
-<h2><%= link_to '今日のSTEP', new_diary_path %></h2>
+<h2><%= link_to '今日のレコード', new_diary_path %></h2>
 
 <%= month_calendar events: @diaries do |date, diaries| %>
   <%= date %>
@@ -26,41 +26,103 @@
   <% end %>
 <% end %>
 
-<h1>週カレンダーA</h1>
+<h1>週カレンダー（体調 朝・昼・夜）</h1>
+<h2>朝</h2>
 <%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
   <%= date %>
 
   <% diaries.each do |diary| %>
-    <% if diary.day_icon == '普通' %>
+    <% if diary.feeling.morning_feel == '普通' %>
       <%= link_to image_tag("mark_face_smile.png", size: "75x75"), diary %>
     <% end %>
-    <% if diary.day_icon == '元気' %>
+    <% if diary.feeling.morning_feel == '元気' %>
       <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), diary %>
     <% end %>
-    <% if diary.day_icon == '憂うつ' %>
+    <% if diary.feeling.morning_feel == '憂うつ' %>
       <%= link_to image_tag("mark_face_ase.png", size: "75x75"), diary %>
     <% end %>
-    <% if diary.day_icon == 'とても元気' %>
+    <% if diary.feeling.morning_feel == 'とても元気' %>
       <%= link_to image_tag("mark_face_tere.png", size: "75x75"), diary %>
     <% end %>
-    <% if diary.day_icon == 'とても憂うつ' %>
+    <% if diary.feeling.morning_feel == 'とても憂うつ' %>
+      <%= link_to image_tag("mark_face_cry.png", size: "75x75"), diary %>
+    <% end %>
+  <% end %>
+
+<% end %>
+<h2>昼</h2>
+<%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
+  <%= date %>
+
+  <% diaries.each do |diary| %>
+    <% if diary.feeling.noon_feel == '普通' %>
+      <%= link_to image_tag("mark_face_smile.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.noon_feel == '元気' %>
+      <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.noon_feel == '憂うつ' %>
+      <%= link_to image_tag("mark_face_ase.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.noon_feel == 'とても元気' %>
+      <%= link_to image_tag("mark_face_tere.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.noon_feel == 'とても憂うつ' %>
       <%= link_to image_tag("mark_face_cry.png", size: "75x75"), diary %>
     <% end %>
   <% end %>
 
 <% end %>
 
-<h1>週カレンダーB</h1>
+<h2>夜</h2>
+<%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
+  <%= date %>
+
+  <% diaries.each do |diary| %>
+    <% if diary.feeling.night_feel == '普通' %>
+      <%= link_to image_tag("mark_face_smile.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.night_feel == '元気' %>
+      <%= link_to image_tag("mark_face_hehe.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.night_feel == '憂うつ' %>
+      <%= link_to image_tag("mark_face_ase.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.night_feel == 'とても元気' %>
+      <%= link_to image_tag("mark_face_tere.png", size: "75x75"), diary %>
+    <% end %>
+    <% if diary.feeling.night_feel == 'とても憂うつ' %>
+      <%= link_to image_tag("mark_face_cry.png", size: "75x75"), diary %>
+    <% end %>
+  <% end %>
+
+<% end %>
+
+<h1>週カレンダー(睡眠時間)</h1>
+<%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
+  <%= date %>
+
+  <% diaries.each do |diary| %>
+    <h2><%= link_to "#{diary.sleep_hour}時間睡眠", diary %></h2>
+  <% end %>
+<% end %>
+
+<br>
+<div>
+  <%= line_chart @sleep_charts %>
+</div>
+</br>
+
+<h1>週カレンダー（入眠）</h1>
 <%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
   <%= date %>
 
   <% diaries.each do |diary| %>
     <h2><%= link_to "#{diary.sleep_label}", diary %></h2>
-    <h2><%= link_to "#{diary.sleep_hour}時間睡眠", diary %></h2>
   <% end %>
 <% end %>
 
-<h1>週カレンダーC</h1>
+<h1>週カレンダー（外出の有無）</h1>
 <%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
   <%= date %>
 

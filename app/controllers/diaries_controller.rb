@@ -6,6 +6,7 @@ class DiariesController < ApplicationController
   # GET /diaries.json
   def index
     @diaries = current_user.diaries.all
+    @sleep_charts = @diaries.pluck(:start_time, :sleep_hour)
   end
 
   # GET /diaries/1
@@ -28,7 +29,6 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
-    # binding.pry
     if (@diary.getup_at - @diary.sleep_at).negative?
       @diary.sleep_hour = 24 - (@diary.sleep_at - @diary.getup_at ) / 3600
     else
