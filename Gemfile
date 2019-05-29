@@ -12,6 +12,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.5'
+gem "jquery-rails"
 gem 'line-bot-api'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'

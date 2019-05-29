@@ -16,3 +16,5 @@
 //= require chartkick
 //= require Chart.bundle
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
