@@ -6,9 +6,87 @@ class LinebotController < ApplicationController
 
   def client
     @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      # heroku用環境変数
+      # config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      # config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      config.channel_secret = ENV['CHANNEL_SECRET']
+      config.channel_token = ENV['CHANNEL_TOKEN']
     }
+  end
+
+  def push
+    message =
+    {
+      "type": "text",
+      "text": "今日の体調はいかがですか？",
+      "quickReply": {
+        "items": [
+          {
+            "type": "action",
+            "imageUrl": "https://example.com/sushi.png",
+            "action": {
+              "type": "message",
+              "label": "とても元気",
+              "text": "hehe"
+            }
+          },
+          {
+            "type": "action",
+            "imageUrl": "https://example.com/tempura.png",
+            "action": {
+              "type": "message",
+              "label": "元気",
+              "text": "tere"
+            }
+          },
+          {
+            "type": "action",
+            "imageUrl": "https://example.com/tempura.png",
+            "action": {
+              "type": "message",
+              "label": "普通",
+              "text": "smile"
+            }
+          },
+          {
+            "type": "action",
+            "imageUrl": "https://example.com/tempura.png",
+            "action": {
+              "type": "message",
+              "label": "抑うつ",
+              "text": "ase"
+            }
+          },
+          {
+            "type": "action",
+            "imageUrl": "https://example.com/tempura.png",
+            "action": {
+              "type": "message",
+              "label": "とても抑うつ",
+              "text": "cry"
+            }
+          }
+        ]
+      }
+    }
+
+    client.push_message(ENV['PUSH_TO_ID'], message)
+  end
+
+  def morning_push
+    message = {
+      type: 'text',
+      text: 'よく眠れましたか？'
+    }
+    client.push_message(ENV['PUSH_TO_ID'], message)
+  end
+
+  def night_push
+    message = {
+      type: 'text',
+      text: '体調はいかがでしたか？'
+    }
+    client.push_message(ENV['PUSH_TO_ID'], message)
   end
 
   def callback
@@ -48,7 +126,6 @@ class LinebotController < ApplicationController
         end
       end
     }
-
     head :ok
   end
 end

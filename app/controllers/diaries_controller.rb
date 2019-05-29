@@ -6,6 +6,7 @@ class DiariesController < ApplicationController
   # GET /diaries.json
   def index
     @diaries = current_user.diaries.all
+    @sleep_charts = @diaries.pluck(:start_time, :sleep_hour)
   end
 
   # GET /diaries/1
@@ -16,6 +17,7 @@ class DiariesController < ApplicationController
   # GET /diaries/new
   def new
     @diary = Diary.new
+    @diary.build_feeling
   end
 
   # GET /diaries/1/edit
@@ -27,7 +29,6 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
-    # binding.pry
     if (@diary.getup_at - @diary.sleep_at).negative?
       @diary.sleep_hour = 24 - (@diary.sleep_at - @diary.getup_at ) / 3600
     else
@@ -82,6 +83,8 @@ class DiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diary_params
-      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon, :sleep_label, :sleep_hour, :getup_at, :sleep_at)
+      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon,
+                                    :sleep_label, :sleep_hour, :getup_at, :sleep_at,
+                                    :day_action, :halfway_awakening, feeling_attributes:[:id, :morning_feel, :noon_feel, :night_feel])
     end
 end
