@@ -129,7 +129,7 @@
 </div>
 
 <h1>週カレンダー（入眠）</h1>
-<button class= "button_sleep_label">睡眠時間</button>
+<button class= "button_sleep_label">入眠時間</button>
 <div class="sleep_label">
   <%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
     <%= date %>
@@ -142,7 +142,7 @@
 
 
 <h1>週カレンダー（外出の有無）</h1>
-<button class= "button_day_action">睡眠時間</button>
+<button class= "button_day_action">外出</button>
 <div class="day_action">
   <%= week_calendar number_of_weeks: 1, events: @diaries do |date, diaries| %>
     <%= date %>

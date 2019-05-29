@@ -42,7 +42,7 @@ $(function () {
 
 $(function () {
   $('.day_action').hide();
-    $('button.button_day_actionl').click(function () {
+    $('button.button_day_action').click(function () {
       $('.day_action').toggle();
     });
 });
