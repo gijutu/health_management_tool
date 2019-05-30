@@ -1,3 +1,4 @@
+document.addEventListener("turbolinks:load", function() {
 $(function () {
   $('.morning').hide();
     $('button.button_morning').click(function () {
@@ -45,4 +46,5 @@ $(function () {
     $('button.button_day_action').click(function () {
       $('.day_action').toggle();
     });
+});
 });
