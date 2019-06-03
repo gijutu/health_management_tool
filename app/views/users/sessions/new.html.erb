@@ -1,17 +1,10 @@
-<h2>Log in</h2>
-
+<h1 lass="h3 mb-3 font-weight-normal">ログインする</h1>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <form class="form-signin">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "inputEmail", class: "form-control" %>
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "current-password", id: "inputEmail", class: "form-control" %>
+    <%= f.submit "ログイン", class: "btn btn-lg btn-primary btn-block" %>
+  </form>
 <% end %>
