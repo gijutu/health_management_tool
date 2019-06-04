@@ -1,20 +1,22 @@
-<h1 lass="h3 mb-3 font-weight-normal">新規登録</h1>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="col text-center">
+  <h1 lass="h3 mb-3 font-weight-normal">新規登録</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <form class="form-signin">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "inputEmail", class: "form-control"%>
+    <form class="form-signin">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "inputEmail", class: "form-control"%>
 
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", id: "inputEmail", class: "form-control" %>
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", id: "inputEmail", class: "form-control" %>
 
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "inputEmail", class: "form-control" %>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "inputEmail", class: "form-control" %><br />
 
-    <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-block" %>
-  </form>
-<% end %>
+      <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-block" %>
+    </form>
+  <% end %>
+</div>

@@ -1,8 +1,41 @@
-<h1>manaby-STEP</h1>
-<!-- アドミンのみ -->
-<h3><%= link_to '良好サイン一覧', better_conditions_path %></h3>
-<h3><%= link_to '注意サイン一覧', attentions_path %></h3>
-<h3><%= link_to '悪化サイン一覧', worse_conditions_path %></h3>
+<div class="col text-center">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>manaby-STEP</h1>
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to 'カレンダーを表示', diaries_path, class: "btn btn-info" %>
+    <%= link_to 'サイン一覧/登録', signs_path, class: "btn btn-info" %>
+  </div>
+</div>
 
-<h2><%= link_to 'サイン一覧/登録', signs_path %></h2>
-<h2><%= link_to 'カレンダー表示', diaries_path %></h2>
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to '良好サイン', new_better_condition_path %></h5>
+        <p class="card-text">自分の持っている力が発揮できる状態です。</p>
+        <%= link_to '良好サイン一覧', better_conditions_path, class: "btn btn-outline-primary"%>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card bg-light">
+      <div class="card-body ">
+        <h5 class="card-title"><%= link_to '注意サイン', new_attention_path %></h5>
+        <p class="card-text">本来の力は出せませんが、活動が可能な状態です。</p>
+        <%= link_to '注意サイン一覧', attentions_path, class: "btn btn-outline-warning"%>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to '悪化サイン', new_worse_condition_path %></h5>
+        <p class="card-text">自分をコントロールすることが難しくなる状態です。</p>
+        <%= link_to '悪化サイン一覧', worse_conditions_path, class: "btn btn-outline-danger"%>
+      </div>
+    </div>
+  </div>
