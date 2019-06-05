@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap', '~> 4.3.1'
 gem "chartkick"
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
@@ -12,6 +13,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.5'
+gem "jquery-rails"
 gem 'line-bot-api'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'

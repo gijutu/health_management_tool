@@ -8,4 +8,14 @@ class Diary < ApplicationRecord
   has_one :feeling
   accepts_nested_attributes_for :feeling
 
+  before_save :sleep_save
+
+  def sleep_save
+    if (self.getup_at - self.sleep_at).negative?
+      self.sleep_hour = 24 - (self.sleep_at - self.getup_at ) / 3600
+    else
+      self.sleep_hour = (self.getup_at - self.sleep_at) / 3600
+    end
+  end
+
 end
