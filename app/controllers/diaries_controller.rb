@@ -9,6 +9,11 @@ class DiariesController < ApplicationController
     @sleep_charts = @diaries.pluck(:start_time, :sleep_hour)
   end
 
+  def transition
+    @diaries = current_user.diaries.all
+    @sleep_charts = @diaries.pluck(:start_time, :sleep_hour)
+  end
+
   # GET /diaries/1
   # GET /diaries/1.json
   def show
@@ -67,14 +72,14 @@ class DiariesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_diary
-      @diary = Diary.find(params[:id])
-    end
+  def set_diary
+    @diary = Diary.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def diary_params
-      params.require(:diary).permit(:title, :start_time, :user_id, :day_icon,
-                                    :sleep_label, :sleep_hour, :getup_at, :sleep_at,
-                                    :day_action, :halfway_awakening, feeling_attributes:[:id, :morning_feel, :noon_feel, :night_feel])
-    end
+  def diary_params
+    params.require(:diary).permit(:title, :start_time, :user_id, :day_icon,
+                                  :sleep_label, :sleep_hour, :getup_at, :sleep_at,
+                                  :day_action, :halfway_awakening, feeling_attributes:[:id, :morning_feel, :noon_feel, :night_feel])
+  end
 end
